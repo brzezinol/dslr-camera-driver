@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>5.0</ProjectVersion>
+    <ProjectGuid>{34fa36d6-115c-4f9e-bc78-85f027cc63c7}</ProjectGuid>
+    <avrdevice>ATtiny2313</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFile>$(MSBuildProjectName).elf</OutputFile>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <UseGlobalToolchain>True</UseGlobalToolchain>
+    <ToolchainDirPath>
+    </ToolchainDirPath>
+    <MakeDirPath>
+    </MakeDirPath>
+    <GlobalToolchainPath>F:\Program Files (x86)\Atmel\AVR Studio 5.0\AVR ToolChain\bin</GlobalToolchainPath>
+    <AvrGccProjectExtensions>
+    </AvrGccProjectExtensions>
+    <AssemblyName>AVR_SLIDER_DRIVER</AssemblyName>
+    <Name>AVR_SLIDER_DRIVER</Name>
+    <RootNamespace>AVR_SLIDER_DRIVER</RootNamespace>
+    <avrtool>com.atmel.avrdbg.tool.avrdragon</avrtool>
+    <avrtoolinterface>debugWIRE</avrtoolinterface>
+    <com_atmel_avrdbg_tool_avrdragon>
+      <ToolType>com.atmel.avrdbg.tool.avrdragon</ToolType>
+      <ToolName>AVR Dragon</ToolName>
+      <ToolNumber>00A200023935</ToolNumber>
+      <Channel>
+        <host>127.0.0.1</host>
+        <port>50530</port>
+        <ssl>False</ssl>
+      </Channel>
+      <ToolOptions>
+        <InterfaceName>debugWIRE</InterfaceName>
+        <InterfaceProperties>
+          <JtagDbgClock>1000000</JtagDbgClock>
+          <JtagProgClock>1000000</JtagProgClock>
+          <IspClock>150000</IspClock>
+          <JtagInChain>false</JtagInChain>
+          <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
+          <JtagDevicesBefore>0</JtagDevicesBefore>
+          <JtagDevicesAfter>0</JtagDevicesAfter>
+          <JtagInstrBitsBefore>0</JtagInstrBitsBefore>
+          <JtagInstrBitsAfter>0</JtagInstrBitsAfter>
+        </InterfaceProperties>
+      </ToolOptions>
+    </com_atmel_avrdbg_tool_avrdragon>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolType>com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolName>AVR Simulator</ToolName>
+      <ToolNumber>
+      </ToolNumber>
+      <Channel>
+        <host>127.0.0.1</host>
+        <port>50530</port>
+        <ssl>False</ssl>
+      </Channel>
+    </com_atmel_avrdbg_tool_simulator>
+    <preserveEEPROM>False</preserveEEPROM>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>None</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+      </AvrGcc>
+    </ToolchainSettings>
+    <MemorySettings>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-g2)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+    <MemorySettings>
+      <MemorySegments>
+        <InitialStack IsEnabled="0">
+          <Address>0x80</Address>
+        </InitialStack>
+      </MemorySegments>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AVR_SLIDER_DRIVER.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="CProgram1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="eeprom.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="USART.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
+</Project>
