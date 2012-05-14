@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# AvrStudio Solution File, Format Version 11.00
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "AVR_SLIDER_DRIVER", "AVR_SLIDER_DRIVER\AVR_SLIDER_DRIVER.avrgccproj", "{34FA36D6-115C-4F9E-BC78-85F027CC63C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34FA36D6-115C-4F9E-BC78-85F027CC63C7}.Debug|AVR.ActiveCfg = Debug|AVR
+		{34FA36D6-115C-4F9E-BC78-85F027CC63C7}.Debug|AVR.Build.0 = Debug|AVR
+		{34FA36D6-115C-4F9E-BC78-85F027CC63C7}.Release|AVR.ActiveCfg = Release|AVR
+		{34FA36D6-115C-4F9E-BC78-85F027CC63C7}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
