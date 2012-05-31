@@ -11,7 +11,7 @@
 #include <avr/interrupt.h>
 #include "eeprom.h"
 
-#define F_CPU 8000000UL
+#define F_CPU 4000000UL
 
 #define SENS_TRANS_PIN PB3
 #define SENS_RECV_PIN PB4
@@ -45,7 +45,7 @@ volatile uint32_t AdcAvgValue = 0;		//
 volatile uint32_t AdcAvgSum = 0;		// 
 volatile unsigned char AdcCount = 0;
 volatile uint32_t AdcHalfValue = 0;	// przechowuje po³owê wartoœci max
-volatile uint32_t STEP_COUNT = 0;
+//volatile uint32_t STEP_COUNT = 0;
 volatile uint16_t ACTUAL_RELEASE_TIMER_VALUE = 0;
 volatile char LAST_STOP_DIR = 255;
 volatile char INITIAL_LOCK = 1;
@@ -87,17 +87,17 @@ ISR (TIMER0_OVF_vect)
 {
 	TCNT0 = ACTUAL_RELEASE_TIMER_VALUE;
 	PORTD ^= (1<<P_OUT_STEP);	
-	if(((PINB & _BV(P_OUT_STEP)) >> P_OUT_STEP) == 1)
-	{
-		STEP_COUNT ++;
-	}
+	//if(((PINB & _BV(P_OUT_STEP)) >> P_OUT_STEP) == 1)
+	//{
+		//STEP_COUNT ++;
+	//}
 }
 
 void liczPowyzejPolowy(uint16_t * r)
 {
 	volatile int16_t tmp = AdcAvgValue / 100;
-	tmp *= 9;
-	tmp -= 15;
+	tmp *= 8;
+	tmp -= 35;
 	*r = tmp;
 }
 
@@ -105,7 +105,7 @@ void liczPonizejPolowy(uint16_t * r)
 {
 	volatile int16_t tmp = AdcAvgValue / 100;
 	tmp *= -12;
-	tmp += 255;
+	tmp += 235;
 	*r = tmp;
 }
 
@@ -205,9 +205,9 @@ int main(void)
 						if(LAST_STOP_DIR == 255)
 						{
 							liczPonizejPolowy(&ACTUAL_RELEASE_TIMER_VALUE);
-							if(ACTUAL_RELEASE_TIMER_VALUE > 250)
+							if(ACTUAL_RELEASE_TIMER_VALUE > 248)
 							{
-								ACTUAL_RELEASE_TIMER_VALUE = 250;
+								ACTUAL_RELEASE_TIMER_VALUE = 248;
 							}
 							SET_DIR_LEFT;
 							SET_STEPPER_START;
@@ -228,9 +228,9 @@ int main(void)
 						if(LAST_STOP_DIR == 255)
 						{
 							liczPowyzejPolowy(&ACTUAL_RELEASE_TIMER_VALUE);
-							if(ACTUAL_RELEASE_TIMER_VALUE > 250)
+							if(ACTUAL_RELEASE_TIMER_VALUE > 248)
 							{
-								ACTUAL_RELEASE_TIMER_VALUE = 250;
+								ACTUAL_RELEASE_TIMER_VALUE = 248;
 							}
 							SET_DIR_RIGHT;
 							SET_STEPPER_START;
