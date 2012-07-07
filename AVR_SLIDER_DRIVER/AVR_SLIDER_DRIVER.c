@@ -29,7 +29,7 @@
 #define SET_DIR_LEFT			PORTD &= ~(1 << P_OUT_DIR)
 #define SET_DIR_RIGHT			PORTD |= (1 << P_OUT_DIR)
 #define SET_STEPPER_STOP		TCCR0B = 0x00
-#define SET_STEPPER_START		TCCR0B = (0<<CS02)|(1<<CS01)|(1<<CS00)
+#define SET_STEPPER_START		TCCR0B = (1<<CS02)|(0<<CS01)|(0<<CS00)
 
 #define SET_TIMER1_STOP			TCCR1B = 0x00
 #define SET_TIMER1_START		TCCR1B = (1<<ICNC1) | (1<<ICES1) | (1<<CS10);
@@ -99,6 +99,7 @@ void liczPowyzejPolowy(uint16_t * r)
 	tmp *= 8;
 	tmp -= 35;
 	*r = tmp;
+	//*r = 0;
 }
 
 void liczPonizejPolowy(uint16_t * r)
@@ -107,6 +108,7 @@ void liczPonizejPolowy(uint16_t * r)
 	tmp *= -12;
 	tmp += 235;
 	*r = tmp;
+	//*r = 0;
 }
 
 int main(void)
