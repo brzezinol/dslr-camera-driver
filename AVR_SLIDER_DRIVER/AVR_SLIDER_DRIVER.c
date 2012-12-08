@@ -2,7 +2,8 @@
  * AVR_SLIDER_DRIVER.c
  *
  * Created: 2012-02-02 20:51:15
- *  Author: Piotrek
+ *  Author: Piotrek Brzezi≈Ñski
+ *  email: brzezinol@gmail.com
  */ 
 
 #include <avr/eeprom.h>
@@ -16,7 +17,7 @@
 #define SENS_TRANS_PIN PB3
 #define SENS_RECV_PIN PB4
 
-#define C_PIN		PB0      // koÒcÛwka kondensatora
+#define C_PIN		PB0      // ko√±c√≥wka kondensatora
 #define R_PIN		PB2		 // koncowka rezystora
 #define P_PIN		PB1		 // koncowka pot
 
@@ -38,13 +39,13 @@
 #define SET_COMPARATOR_ENABLE	ACSR = (1<<ACIC);
 #define _BV(n)					(1 << n)
 
-volatile uint8_t AdcBusy = 0;		// do sprawdzania zajÍtoúci przetwornika
+volatile uint8_t AdcBusy = 0;		// do sprawdzania zaj√™to¬úci przetwornika
 volatile uint32_t AdcMaxVal = 0;	// wartosc czytana z eeprom po kalibracji 2 bajt
-volatile uint32_t AdcValue = 0;		// przechowuje przetworzonπ wartoúÊ
+volatile uint32_t AdcValue = 0;		// przechowuje przetworzon¬π warto¬ú√¶
 volatile uint32_t AdcAvgValue = 0;		// 
 volatile uint32_t AdcAvgSum = 0;		// 
 volatile unsigned char AdcCount = 0;
-volatile uint32_t AdcHalfValue = 0;	// przechowuje po≥owÍ wartoúci max
+volatile uint32_t AdcHalfValue = 0;	// przechowuje po¬≥ow√™ warto¬úci max
 //volatile uint32_t STEP_COUNT = 0;
 volatile uint16_t ACTUAL_RELEASE_TIMER_VALUE = 0;
 volatile char LAST_STOP_DIR = 255;
@@ -57,29 +58,29 @@ void AdcStart(void)
   SET_TIMER1_STOP;
   SET_TIMER1_CLEAR;			// wyzeruj timer 1
   SET_COMPARATOR_ENABLE;
-  DDRB &= ~(1<<C_PIN);		// ustaw liniÍ kondenstaora (- komparatora) jako wejúcie
-  PORTB |= (1<<R_PIN);      // ≥adujemy kondensator
+  DDRB &= ~(1<<C_PIN);		// ustaw lini√™ kondenstaora (- komparatora) jako wej¬úcie
+  PORTB |= (1<<R_PIN);      // ¬≥adujemy kondensator
   SET_TIMER1_START;			// START LICZNIKA
-  while(AdcBusy);			// czekaj na przerwanie od przechwytywania lub przepe≥nienia
+  while(AdcBusy);			// czekaj na przerwanie od przechwytywania lub przepe¬≥nienia
 }
 
 ISR (TIMER1_CAPT_vect)    // przerwanie od przechwytywania licznika 1
 {
-  AdcValue = ICR1;            // odczytaj wartoúÊ z rejestru przechwytujπcego
+  AdcValue = ICR1;            // odczytaj warto¬ú√¶ z rejestru przechwytuj¬πcego
   SET_TIMER1_STOP;			   //TIMER1 STOP
-  PORTB &= ~(1<<R_PIN);        //wylaczamy ≥adowanie kondensatora
-  DDRB |= (1<<C_PIN);		// ustaw liniÍ kondenstaora (- komparatora) jako wyjúcie
-  _delay_us(10);			// i czekaj na roz≥adowanie kondensator
+  PORTB &= ~(1<<R_PIN);        //wylaczamy ¬≥adowanie kondensatora
+  DDRB |= (1<<C_PIN);		// ustaw lini√™ kondenstaora (- komparatora) jako wyj¬úcie
+  _delay_us(10);			// i czekaj na roz¬≥adowanie kondensator
   AdcBusy = 0;        
 }
 
-ISR (TIMER1_OVF_vect)        // przerwanie od przepe≥nienia licznika 1
+ISR (TIMER1_OVF_vect)        // przerwanie od przepe¬≥nienia licznika 1
 {
   SET_TIMER1_STOP;
-  PORTB &= ~(1<<R_PIN);        //wylaczamy ≥adowanie kondensatora
-  DDRB |= (1<<C_PIN);		// ustaw liniÍ kondenstaora (- komparatora) jako wyjúcie
-  _delay_us(10);			// i czekaj na roz≥adowanie kondensator
-  AdcValue = 0;                // wpisz wartoúÊ 0
+  PORTB &= ~(1<<R_PIN);        //wylaczamy ¬≥adowanie kondensatora
+  DDRB |= (1<<C_PIN);		// ustaw lini√™ kondenstaora (- komparatora) jako wyj¬úcie
+  _delay_us(10);			// i czekaj na roz¬≥adowanie kondensator
+  AdcValue = 0;                // wpisz warto¬ú√¶ 0
   AdcBusy = 0; 
 }
 
