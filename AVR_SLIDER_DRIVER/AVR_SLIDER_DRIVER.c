@@ -7,7 +7,6 @@
  */ 
 
 #include <avr/eeprom.h>
-#include "USART.h"
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "eeprom.h"
