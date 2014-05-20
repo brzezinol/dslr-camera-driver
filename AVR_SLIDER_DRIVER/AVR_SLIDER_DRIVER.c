@@ -3,7 +3,7 @@
  *
  * Created: 2012-02-02 20:51:15
  *  Author: Piotrek Brzeziński
- *  email: brzezinol@gmail.com
+ *  email: piotr@brzezin.com
  */ 
 
 #include <avr/eeprom.h>
